@@ -4,7 +4,8 @@ const hbs = require("hbs");
 const geocode = require("./utils/geocode.js");
 const forecast = require("./utils/forecast.js");
 
-const app = express()
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Define Paths for Express Config
 const publicDirPath = path.join(__dirname, "..", "public");
@@ -72,12 +73,6 @@ app.get("/weather", (req, res) => {
             })
         })
     })
-
-    // res.send({
-    //     address: req.query.address,
-    //     forecast: "It is 30deg", 
-    //     location: "Delhi"
-    // });
 });
 
 app.get("/help/*", (req, res) => {
@@ -96,6 +91,6 @@ app.get("*", (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log("Server Running on PORT 3000....");
+app.listen(PORT, () => {
+    console.log("Server Running on PORT " + PORT);
 });
