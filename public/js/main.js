@@ -13,7 +13,7 @@ weatherForm.addEventListener("submit", (e) => {
     const location = searchElem.value;
 
     servingMessage.textContent = "Loading...";
-    summary.textContent = currTemp.textContent = highTemp.textContent = lowTemp.textContent = "";
+    summary.textContent = currTemp.textContent = highTemp.textContent = lowTemp.textContent = precipProb.textContent = "";
 
     // Fetch can only be used for client side JavaScript, cannot be used with Node
     fetch("/weather?address=" + location).then((res) => {
