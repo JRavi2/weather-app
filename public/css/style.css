@@ -10,6 +10,15 @@ body {
     padding: 0 1rem;
 }
 
+nav {
+    display: flex;
+    text-align: center;
+}
+
+nav a {
+    flex: 1;
+}
+
 .main-content {
     flex-grow: 1;
 }
@@ -103,4 +112,14 @@ button {
     transform: translateX(0%);
     width: 100%;
     opacity: 1;
+}
+
+@media screen and (max-width: 780px) {
+    .input-box {
+        width: 80%;
+    }
+
+    header h1 {
+        text-align: center;
+    }
 }
