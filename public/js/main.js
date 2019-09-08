@@ -18,15 +18,18 @@ weatherForm.addEventListener("submit", (e) => {
     // Fetch can only be used for client side JavaScript, cannot be used with Node
     fetch("/weather?address=" + location).then((res) => {
         res.json().then((data) => {
+
             if(data.error) {
-                return messageOne.textContent = data.error;
+                return servingMessage.textContent = data.error;
             }
+
             servingMessage.textContent = "Showing Weather for: " + data.location;
             summary.textContent = data.forecast.summary;
             currTemp.textContent = "It is currently " + data.forecast.currentTemp + " degree Celsius.";
             highTemp.textContent = "Highest Temperature will be " + data.forecast.highTemp + " degree Celsius";
             lowTemp.textContent = "Lowest Temperature will be " + data.forecast.lowTemp + " degree Celsius";
             precipProb.textContent = "There is " + data.forecast.precipProb * 100 + "% chance of " + data.forecast.precipType;
+
         });
     });
 });
