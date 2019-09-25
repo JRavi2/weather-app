@@ -7,31 +7,160 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="icon" href="/img/weather.png">
+    <link rel="icon" href="/img/logo.png">
     <title>Home Page</title>
 </head>
 
 <body>
     <div class="main-content">
         {{>header}}
+        <center>
+            <form id="search-form">
+                <input type="text" placeholder="Location" required>
+                {{!-- <span id="label">Location</span> --}}
+                <a id="submit-location"><img src="/img/search.png" width="24" height="24"></a>
+            </form>
+            <section id="dynamic-content">
+                <div id="header">
+                    <span class="header-unit"><span class="data-header">Wind: </span><span id="wind-speed">2
+                            m/s</span></span>
+                    <span class="header-unit"><span class="data-header">Humidity: </span><span
+                            id="humidity">62%</span></span>
+                    <span class="header-unit"><span class="data-header">Dew Pt: </span><span id="dew">23</span></span>
+                    <span class="header-unit"><span class="data-header">UV Index: </span><span
+                            id="uv-index">4</span></span>
+                    <span class="header-unit"><span class="data-header">Visibility: </span><span id="visibility">4
+                            km</span></span>
+                    <span class="header-unit"><span class="data-header">Pressure: </span><span id="pressure">1009
+                            hPa</span></span>
+                </div>
 
-        <form>
-            <div class="input-box">
-                <input type="text" required>
-                <label id="label-location">
-                    <span id="label-content">Location</span>
-                </label>
-            </div>
-            <br>
-            <button>Search</button>
-        </form>
-        <br>
-        <p id="serving-message"></p>
-        <p id="summary"></p>
-        <p id="curr-temp"></p>
-        <p id="high-temp"></p>
-        <p id="low-temp"></p>
-        <p id="precip-prob"></p>
+                <div id="current-forecast">
+                    <img src="/img/cloudy.png" width="64" height="64" align="left">&nbsp
+                    <span id="current-summary">31 Humid and Overcast</span><br>&nbsp
+                    <span class="data-header">Low: </span><span id="low-temp">24</span>
+                    <span class="data-header">High: </span><span id="high-temp">32</span>
+                </div>
+
+                <br>
+
+                <div id="hourly-forecast">
+                    <span id="hourly-header">Humid throughout the day.</span><br>
+
+                    <div id="stripes">
+                        <span class="timeline-stripe-2" style="width: 67.6667px; left: 0px;"><span>Cloudy</span></span>
+                        <span class="timeline-stripe-1" style="width: 201px; left: 67.6667px;"><span>Partly
+                                Cloudy</span></span>
+                        <span class="timeline-stripe-0"
+                            style="width: 167.6667px; left: 266.667px;"><span>Clear</span></span>
+                        <span class="timeline-stripe-1" style="width: 334.333px; left: 433.333px;"><span>Partly
+                                Cloudy</span></span>
+                        <span class="timeline-stripe-2"
+                            style="width: 32.3333px; left: 766.667px;"><span>Cloudy</span></span>
+                    </div>
+
+                    <div id="hour-ticks">
+                        <span class="even" style="left: 0px;"></span>
+                        <span class="odd" style="left: 33.3333px;"></span>
+                        <span class="even" style="left: 66.6667px;"></span>
+                        <span class="odd" style="left: 100px;"></span>
+                        <span class="even" style="left: 133.333px;"></span>
+                        <span class="odd" style="left: 166.667px;"></span>
+                        <span class="even" style="left: 200px;"></span>
+                        <span class="odd" style="left: 233.333px;"></span>
+                        <span class="even" style="left: 266.667px;"></span>
+                        <span class="odd" style="left: 300px;"></span>
+                        <span class="even" style="left: 333.333px;"></span>
+                        <span class="odd" style="left: 366.667px;"></span>
+                        <span class="even" style="left: 400px;"></span>
+                        <span class="odd" style="left: 433.333px;"></span>
+                        <span class="even" style="left: 466.667px;"></span>
+                        <span class="odd" style="left: 500px;"></span>
+                        <span class="even" style="left: 533.333px;"></span>
+                        <span class="odd" style="left: 566.667px;"></span>
+                        <span class="even" style="left: 600px;"></span>
+                        <span class="odd" style="left: 633.333px;"></span>
+                        <span class="even" style="left: 666.667px;"></span>
+                        <span class="odd" style="left: 700px;"></span>
+                        <span class="even" style="left: 733.333px;"></span>
+                        <span class="odd" style="left: 766.667px;"></span>
+                    </div>
+
+                    <div id="hours">
+                        <span class="hour first" style="left: 1px;"><span class="Now">Now</span></span>
+                        <span class="hour" style="left: 33.3333px;"></span>
+                        <span class="hour" style="left: 56.6667px;"><span class="8am">8am</span></span>
+                        <span class="hour" style="left: 100px;"></span>
+                        <span class="hour" style="left: 123.333px;"><span class="10am">10am</span></span>
+                        <span class="hour" style="left: 166.667px;"></span>
+                        <span class="hour" style="left: 190px;"><span class="12pm">12pm</span></span>
+                        <span class="hour" style="left: 233.333px;"></span>
+                        <span class="hour" style="left: 256.667px;"><span class="3pm">3pm</span></span>
+                        <span class="hour" style="left: 300px;"></span>
+                        <span class="hour" style="left: 323.333px;"><span class="5pm">5pm</span></span>
+                        <span class="hour" style="left: 366.667px;"></span>
+                        <span class="hour" style="left: 390px;"><span class="7pm">7pm</span></span>
+                        <span class="hour" style="left: 433.333px;"></span>
+                        <span class="hour" style="left: 456.667px;"><span class="9pm">9pm</span></span>
+                        <span class="hour" style="left: 500px;"></span>
+                        <span class="hour" style="left: 523.333px;"><span class="11pm">11pm</span></span>
+                        <span class="hour" style="left: 566.667px;"></span>
+                        <span class="hour" style="left: 590px;"><span class="12am">12am</span></span>
+                        <span class="hour" style="left: 633.333px;"></span>
+                        <span class="hour" style="left: 656.667px;"><span class="2am">2am</span></span>
+                        <span class="hour" style="left: 700px;"></span>
+                        <span class="hour" style="left: 723.333px;"><span class="4am">4am</span></span>
+                        <span class="hour" style="left: 766.667px;"></span>
+                    </div>
+
+                    <div id="temps">
+                        <span class="first" style="opacity: 0.896232; left: 1px;">
+                            <span>32°</span>
+                        </span>
+                        <span style="opacity: 0.739314; left: 56.6667px;">
+                            <span>30°</span>
+                        </span>
+                        <span style="opacity: 0.529246; left: 123.333px;">
+                            <span>27°</span>
+                        </span>
+                        <span style="opacity: 0.444038; left: 190px;">
+                            <span>26°</span>
+                        </span>
+                        <span style="opacity: 0.384139; left: 256.667px;">
+                            <span>26°</span>
+                        </span>
+                        <span style="opacity: 0.333521; left: 323.333px;">
+                            <span>25°</span>
+                        </span>
+                        <span style="opacity: 0.284589; left: 390px;">
+                            <span>24°</span>
+                        </span>
+                        <span style="opacity: 0.25; left: 456.667px;">
+                            <span>24°</span>
+                        </span>
+                        <span style="opacity: 0.365579; left: 523.333px;">
+                            <span>25°</span>
+                        </span>
+                        <span style="opacity: 0.708099; left: 590px;">
+                            <span>29°</span>
+                        </span>
+                        <span style="opacity: 0.920697; left: 656.667px;">
+                            <span>32°</span>
+                        </span>
+                        <span style="opacity: 1; left: 723.333px;">
+                            <span>33°</span>
+                        </span>
+                    </div>
+                </div>
+            </section>
+            {{!-- <br>
+            <p id="serving-message"></p>
+            <p id="summary"></p>
+            <p id="curr-temp"></p>
+            <p id="high-temp"></p>
+            <p id="low-temp"></p>
+            <p id="precip-prob"></p> --}}
+        </center>
     </div>
 
     {{>footer}}

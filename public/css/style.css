@@ -5,37 +5,18 @@ body {
 
     color: #333333;
     font-family: Arial, Helvetica, sans-serif;
-    max-width: 650px;
+    max-width: 75%;
     margin: 0 auto;
     padding: 0 1rem;
 }
 
-nav {
-    display: flex;
-    text-align: center;
-}
-
-nav a {
-    flex: 1;
-}
-
-.main-content {
-    flex-grow: 1;
-}
-
-footer {
-    color: #888888;
-    border-top: 1px solid #eeeeee;
-    margin-top: 1rem;
-    padding: 1rem 0;
-}
+/* Header */
 
 header {
     margin-top: 1rem;
-    margin-bottom: 3rem;
 }
 
-h1 {
+header h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
 }
@@ -46,74 +27,172 @@ header a {
     text-decoration: none;
 }
 
-.input-box {
-    position: relative;
+header img {
+    margin: 0 20px;
+}
+
+nav {
+    display: flex;
+    text-align: center;
+    padding: 4px 0;
+    border-top: 2px solid #333333;
+    border-bottom: 2px solid #333333;
+}
+
+nav a {
+    flex: 1;
+}
+
+/* Main Content */
+
+.main-content {
+    flex-grow: 1;
+}
+
+/* Search Form*/
+
+#search-form {
+    background-color: #eeeeee;
+    padding: 7.5px 0;
+}
+
+#search-form input {
     width: 50%;
-    height: 2rem;
-}
-
-.input-box input {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    padding-top: 10px;
+    height: 4vh;
     border: none;
+    border-radius: 25px;
     outline: none;
-    bottom: 0;
+    text-align: center;
 }
 
-.input-box label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    border-bottom: 1px solid black;
-}
-
-.input-box label::after {
-    content: "";
-    position: absolute;
-    left: 0px;
-    bottom: -1px;
-    height: 100%;
-    width: 0%;
-    border-bottom: 3px solid black;
-    /*transform: translateX(-100%);*/
-    opacity: 1;
-    transition: all 0.3s ease;
-}
-
-#label-content {
-    position: absolute;
-    bottom: 5px;
-    left: 0px;
-    color: #888888;
-    transition: all 0.3s ease;
-}
-
-button {
-    cursor: pointer;
-    border: 1px solid #888888;
+#search-form #submit-location {
     background: #888888;
-    color: #ffffff;
-    padding: 0.5rem;
 }
 
-/* Animations */
-.input-box input:focus + #label-location #label-content, .input-box input:valid + #label-location #label-content{
-    transform: translateY(-100%);
-    font-size: 14px;
-    color: #333333;
+#search-form img {
+    position: absolute;
+    margin-left: 0.5rem;
+    padding: 2px;
 }
 
-.input-box input:focus + #label-location::after, .input-box input:valid + #label-location::after {
-    transform: translateX(0%);
-    width: 100%;
-    opacity: 1;
+/* Dynamic content Styling */
+
+.data-header {
+    font-weight: bold;
 }
 
+#dynamic-content #header {
+    display: flex;
+    padding: 10px 0;
+    background: #f7f5f5;
+}
+
+#dynamic-content #header .header-unit {
+    flex: 1;
+    font-weight: 500;
+}
+
+#dynamic-content #current-forecast {
+    max-width: 50%;
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+#dynamic-content #current-forecast #current-summary {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+#dynamic-content #hourly-forecast #hourly-header {
+    display: block;
+    font-size: 32px;
+    font-weight: lighter;
+    margin: 10px 0;
+}
+
+#dynamic-content #hourly-forecast #stripes {
+    position: relative;
+    left: 10%;
+}
+
+#dynamic-content #hourly-forecast #stripes > span {
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+}
+
+#dynamic-content #hourly-forecast #stripes > span.timeline-stripe-0 {
+    background: #eeeef5;
+}
+
+#dynamic-content #hourly-forecast #stripes > span.timeline-stripe-1 {
+    background: #d5dae2;
+}
+
+#dynamic-content #hourly-forecast #stripes > span.timeline-stripe-2 {
+    background: #b6bfcb;
+}
+
+#dynamic-content #hourly-forecast {
+    height: 100px;
+}
+
+#dynamic-content #hourly-forecast #hour-ticks {
+    position: relative;
+    top: 40%;
+    left: 10%;
+}
+
+#dynamic-content #hourly-forecast #hour-ticks span {
+    position: absolute;
+    display: inline-block;
+    width: 2px;
+    border-left: 1px solid #999999;
+}
+
+#dynamic-content #hourly-forecast #hour-ticks span.even {
+    height: 5px;
+}
+
+#dynamic-content #hourly-forecast #hour-ticks span.odd {
+    height: 10px;
+}
+
+#dynamic-content #hourly-forecast #hours {
+    position: relative;
+    left: 10%;
+    top: 50%;
+}
+
+#dynamic-content #hourly-forecast #hours .hour {
+    position: absolute;
+    width: 10px;
+    height: 5px;
+    font-size: 12.5px;
+    justify-content: center;
+}
+
+#dynamic-content #hourly-forecast #temps {
+    position: relative;
+    left: 10%;
+    top: 65%;
+}
+
+#dynamic-content #hourly-forecast #temps span {
+    position: absolute;
+}
+
+/* Footer */
+footer {
+    color: #888888;
+    border-top: 1px solid #d8d8d8;
+    margin-top: 1rem;
+    padding: 1rem 0;
+}
+
+/* Media Queries */
 @media screen and (max-width: 780px) {
     .input-box {
         width: 80%;

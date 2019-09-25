@@ -24,7 +24,6 @@ hbs.registerPartials(partialsPath);
 // Setting up the Static Web Pages
 app.use(express.static(publicDirPath));
 
-
 // Routes
 app.get("", (req, res) => {
     res.render("index", {
@@ -38,40 +37,42 @@ app.get("/about", (req, res) => {
         title: "About Me",
         name: "Ravi Jain"
     });
-})
+});
 
 app.get("/help", (req, res) => {
     res.render("help", {
         title: "Help",
         name: "Ravi Jain"
-    })
+    });
 });
 
-
 app.get("/weather", (req, res) => {
-    if(!req.query.address) {
+    if (!req.query.address) {
         return res.send({
             error: "Please provide an address"
         });
-    };
+    }
 
-    geocode(req.query.address, (error, {latitude, longitude, location} = {}) => {
-        if(error) {
-            return res.send({error});
-        }
-
-        forecast(latitude, longitude, (error, forecastData) => {
-            if(error) {
-                return res.send(error);
+    geocode(
+        req.query.address,
+        (error, { latitude, longitude, location } = {}) => {
+            if (error) {
+                return res.send({ error });
             }
 
-            res.send({
-                location,
-                forecast: forecastData,
-                address: req.query.address
-            })
-        })
-    })
+            forecast(latitude, longitude, (error, forecastData) => {
+                if (error) {
+                    return res.send(error);
+                }
+
+                res.send({
+                    location,
+                    forecast: forecastData,
+                    address: req.query.address
+                });
+            });
+        }
+    );
 });
 
 app.get("/help/*", (req, res) => {
@@ -80,15 +81,15 @@ app.get("/help/*", (req, res) => {
         error: "Help Article Not Found",
         name: "Ravi Jain"
     });
-})
+});
 
 app.get("*", (req, res) => {
     res.render("404", {
         title: "Error!",
         error: "404 Page Not Found",
         name: "Ravi Jain"
-    })
-})
+    });
+});
 
 app.listen(PORT, () => {
     console.log("Server Running on PORT " + PORT);
