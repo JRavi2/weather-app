@@ -17,7 +17,7 @@ header {
 }
 
 header h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
 }
 
@@ -52,13 +52,45 @@ nav a {
 /* Search Form*/
 
 #search-form {
+    position: relative;
     background-color: #eeeeee;
     padding: 7.5px 0;
 }
 
-#search-form input {
+#search-form .autocomplete {
+    position: relative;
     width: 50%;
-    height: 4vh;
+}
+
+#search-form .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+#search-form .autocomplete-items div {
+    padding: 5px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+#search-form .autocomplete-items div:hover {
+    background-color: #e9e9e9;
+}
+#search-form .autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+}
+
+#search-form .autocomplete input {
+    width: 100%;
+    padding: 0.5rem 0;
     border: none;
     border-radius: 25px;
     outline: none;
@@ -66,6 +98,9 @@ nav a {
 }
 
 #search-form #submit-location {
+    position: absolute;
+    top: 20%;
+    right: 25%;
     background: #888888;
 }
 
@@ -95,7 +130,7 @@ nav a {
 #dynamic-content #current-forecast {
     max-width: 50%;
     text-align: left;
-    margin-top: 30px;
+    margin-top: 3rem;
     margin-bottom: 10px;
 }
 
@@ -189,7 +224,7 @@ footer {
     color: #888888;
     border-top: 1px solid #d8d8d8;
     margin-top: 1rem;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 }
 
 /* Media Queries */

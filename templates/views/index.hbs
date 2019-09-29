@@ -16,8 +16,9 @@
         {{>header}}
         <center>
             <form id="search-form">
-                <input type="text" placeholder="Location" required>
-                {{!-- <span id="label">Location</span> --}}
+                <div class="autocomplete">
+                    <input type="text" placeholder="Location" id="input" required>
+                </div>
                 <a id="submit-location"><img src="/img/search.png" width="24" height="24"></a>
             </form>
             <section id="dynamic-content">
@@ -165,7 +166,7 @@
 
     {{>footer}}
 
-    <script src="./js/main.js"></script>
+    <script src="/js/autocomplete.js"></script>
 </body>
 
 </html>
