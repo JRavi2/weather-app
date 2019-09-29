@@ -1,5 +1,6 @@
 inp = document.getElementById("input");
 
+// Setting up the geocode function to get the autocomplete suggestions
 const geocode = (address, callback) => {
     const url =
         "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
@@ -42,12 +43,14 @@ inp.addEventListener("input", e => {
     }
     currentFocus = -1;
     const res = geocode(inp.value, data => {
+        // Creating a container for the list of suggestions
         a = document.createElement("div");
         a.setAttribute("id", inp.id + "autocomplete-list");
         a.setAttribute("class", "autocomplete-items");
 
         inp.parentNode.appendChild(a);
 
+        // Looping throgh the results from the geocode api and showing them on the DOM
         data.forEach(place => {
             b = document.createElement("div");
             b.innerHTML =
@@ -65,6 +68,7 @@ inp.addEventListener("input", e => {
     });
 });
 
+// managing the Highlighting of the selected Option
 inp.addEventListener("keydown", e => {
     var x = document.getElementById(inp.id + "autocomplete-list");
     if (x) x = x.getElementsByTagName("div");
@@ -83,6 +87,7 @@ inp.addEventListener("keydown", e => {
     }
 });
 
+// Helper Functions
 const addActive = x => {
     if (!x) return false;
 
