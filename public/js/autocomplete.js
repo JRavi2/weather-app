@@ -1,4 +1,5 @@
-inp = document.getElementById("input");
+const inp = document.getElementById("input");
+const form = document.getElementById("search-form");
 
 // Setting up the geocode function to get the autocomplete suggestions
 const geocode = (address, callback) => {
@@ -61,6 +62,8 @@ inp.addEventListener("input", e => {
 
             b.addEventListener("click", e => {
                 inp.value = e.target.getElementsByTagName("input")[0].value;
+                // form.submit();
+                submitForm(inp.value);
                 closeAllLists();
             });
             a.appendChild(b);

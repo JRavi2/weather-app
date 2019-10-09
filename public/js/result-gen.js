@@ -1,42 +1,60 @@
-// const weatherFormSubmit = document.querySelector("#submit-location");
-// const searchElem = document.querySelector("input");
+const searchForm = document.getElementById("search-form");
+const inputField = document.getElementById("input");
 
-// weatherFormSubmit.addEventListener("click", e => {
-//     e.preventDefault(); // e.preventDefault() prevents the browser from refreshing the page after submitting the form
+const windSpeed = document.getElementById("wind-speed");
+const humidity = document.getElementById("humidity");
+const dewPt = document.getElementById("dew");
+const uvIndex = document.getElementById("uv-index");
+const visibility = document.getElementById("visibility");
+const pressure = document.getElementById("pressure");
+const currentSummary = document.getElementById("current-summary");
+const lowTemp = document.getElementById("low-temp");
+const highTemp = document.getElementById("high-temp");
+const forecastImg = document.getElementById("forecast-image");
+const hourlyHeader = document.getElementById("hourly-header");
 
-//     const location = searchElem.value;
+// Fetching the data from the "weather?address=" route
+const submitForm = location => {
+    fetch("/weather?address=" + location)
+        .then(res => {
+            res.json()
+                .then(data => {
+                    renderData(data);
+                })
+                .catch(e => {
+                    renderError(e);
+                });
+        })
+        .catch(e => {
+            renderError(e);
+        });
+};
 
-//     servingMessage.textContent = "Loading...";
-//     summary.textContent = currTemp.textContent = highTemp.textContent = lowTemp.textContent = precipProb.textContent =
-//         "";
+const renderData = data => {
+    windSpeed.innerText = data.currently.windSpeed + " m/s";
+    humidity.innerText = data.currently.humidity * 100 + "%";
+    dewPt.innerText = Math.round(data.currently.dewPoint) + "˚";
+    uvIndex.innerText = data.currently.uvIndex;
+    visibility.innerText = Math.round(data.currently.visibility) + " km";
+    pressure.innerText = Math.round(data.currently.pressure) + "hPa";
 
-//     // Fetch can only be used for client side JavaScript, cannot be used with Node
-//     fetch("/weather?address=" + location).then(res => {
-//         res.json().then(data => {
-//             if (data.error) {
-//                 return (servingMessage.textContent = data.error);
-//             }
+    currentSummary.innerText =
+        Math.round(data.currently.temperature) + "˚ " + data.currently.summary;
+    lowTemp.innerText = Math.round(data.daily.data[0].temperatureLow) + "˚";
+    highTemp.innerText = Math.round(data.daily.data[0].temperatureHigh) + "˚";
+    switch (data.currently.summary) {
+        case "Partly Cloudy":
+            forecastImg.src = "/img/partly-cloudy-day.png";
+            break;
+        case "Light Rain":
+            forecastImg.src = "/img/rain.png";
+            break;
+        default:
+            forecastImg.src = "/img/logo.png";
+            break;
+    }
 
-//             servingMessage.textContent =
-//                 "Showing Weather for: " + data.location;
-//             summary.textContent = data.forecast.summary;
-//             currTemp.textContent =
-//                 "It is currently " +
-//                 data.forecast.currentTemp +
-//                 " degree Celsius.";
-//             highTemp.textContent =
-//                 "Highest Temperature will be " +
-//                 data.forecast.highTemp +
-//                 " degree Celsius";
-//             lowTemp.textContent =
-//                 "Lowest Temperature will be " +
-//                 data.forecast.lowTemp +
-//                 " degree Celsius";
-//             precipProb.textContent =
-//                 "There is " +
-//                 data.forecast.precipProb * 100 +
-//                 "% chance of " +
-//                 data.forecast.precipType;
-//         });
-//     });
-// });
+    hourlyHeader.innerText = data.hourly.summary;
+};
+
+const renderError = err => {};

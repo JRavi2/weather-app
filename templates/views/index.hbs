@@ -23,21 +23,21 @@
             </form>
             <section id="dynamic-content">
                 <div id="header">
-                    <span class="header-unit"><span class="data-header">Wind: </span><span id="wind-speed">2
-                            m/s</span></span>
+                    <span class="header-unit"><span class="data-header">Wind: </span><span
+                            id="wind-speed"></span></span>
                     <span class="header-unit"><span class="data-header">Humidity: </span><span
-                            id="humidity">62%</span></span>
-                    <span class="header-unit"><span class="data-header">Dew Pt: </span><span id="dew">23</span></span>
+                            id="humidity"></span></span>
+                    <span class="header-unit"><span class="data-header">Dew Pt: </span><span id="dew"></span></span>
                     <span class="header-unit"><span class="data-header">UV Index: </span><span
-                            id="uv-index">4</span></span>
-                    <span class="header-unit"><span class="data-header">Visibility: </span><span id="visibility">4
-                            km</span></span>
-                    <span class="header-unit"><span class="data-header">Pressure: </span><span id="pressure">1009
-                            hPa</span></span>
+                            id="uv-index"></span></span>
+                    <span class="header-unit"><span class="data-header">Visibility: </span><span
+                            id="visibility"></span></span>
+                    <span class="header-unit"><span class="data-header">Pressure: </span><span
+                            id="pressure"></span></span>
                 </div>
 
                 <div id="current-forecast">
-                    <img src="/img/cloudy.png" width="64" height="64" align="left">&nbsp
+                    <img src="/img/cloudy.png" id="forecast-image" width="64" height="64" align="left">&nbsp
                     <span id="current-summary">31 Humid and Overcast</span><br>&nbsp
                     <span class="data-header">Low: </span><span id="low-temp">24</span>
                     <span class="data-header">High: </span><span id="high-temp">32</span>
@@ -47,8 +47,8 @@
 
                 <div id="hourly-forecast">
                     <span id="hourly-header">Humid throughout the day.</span><br>
-
-                    <div id="stripes">
+                </div>
+                {{!-- <div id="stripes">
                         <span class="timeline-stripe-2" style="width: 67.6667px; left: 0px;"><span>Cloudy</span></span>
                         <span class="timeline-stripe-1" style="width: 201px; left: 67.6667px;"><span>Partly
                                 Cloudy</span></span>
@@ -152,20 +152,14 @@
                             <span>33°</span>
                         </span>
                     </div>
-                </div>
+                </div> --}}
             </section>
-            {{!-- <br>
-            <p id="serving-message"></p>
-            <p id="summary"></p>
-            <p id="curr-temp"></p>
-            <p id="high-temp"></p>
-            <p id="low-temp"></p>
-            <p id="precip-prob"></p> --}}
         </center>
     </div>
 
     {{>footer}}
 
+    <script src="/js/result-gen.js"></script>
     <script src="/js/autocomplete.js"></script>
 </body>
 
