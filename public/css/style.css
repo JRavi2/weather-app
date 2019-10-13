@@ -97,6 +97,8 @@ nav a {
     border-radius: 25px;
     outline: none;
     text-align: center;
+    font-weight: 500;
+    font-size: 15px;
 }
 
 #search-form #submit-location {
@@ -110,6 +112,56 @@ nav a {
     position: absolute;
     margin-left: 0.5rem;
     padding: 2px;
+}
+
+/* Loading SVG */
+#loading-svg {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loading-svg path:nth-child(2) {
+    stroke-dasharray: 329px;
+    stroke-dashoffset: 329px;
+    animation: line-anim 2s ease forwards infinite;
+}
+#loading-svg path:nth-child(3) {
+    stroke-dasharray: 398px;
+    stroke-dashoffset: 398px;
+    animation: line-anim 2s ease forwards 0.3s infinite;
+}
+#loading-svg path:nth-child(4) {
+    stroke-dasharray: 452px;
+    stroke-dashoffset: 452px;
+    animation: line-anim 2s ease forwards 0.6s infinite;
+}
+#loading-svg path:nth-child(5) {
+    stroke-dasharray: 499px;
+    stroke-dashoffset: 499px;
+    animation: line-anim 2s ease forwards 0.9s infinite;
+}
+#loading-svg path:nth-child(6) {
+    stroke-dasharray: 227px;
+    stroke-dashoffset: 227px;
+    animation: line-anim 2s ease forwards 1.2s infinite;
+}
+#loading-svg path:nth-child(7) {
+    stroke-dasharray: 396px;
+    stroke-dashoffset: 396px;
+    animation: line-anim 2s ease forwards 1.5s infinite;
+}
+#loading-svg path:nth-child(8) {
+    stroke-dasharray: 569px;
+    stroke-dashoffset: 569px;
+    animation: line-anim 2s ease forwards 1.8s infinite;
+}
+
+@keyframes line-anim {
+    to {
+        stroke-dashoffset: 0;
+    }
 }
 
 /* Dynamic content Styling */
@@ -129,11 +181,15 @@ nav a {
     font-weight: 400;
 }
 
-#dynamic-content #current-forecast {
-    max-width: 50%;
-    text-align: left;
+#dynamic-content #current-forecast-wrap {
+    display: inline-block;
+    text-align: center;
     margin-top: 3rem;
     margin-bottom: 10px;
+}
+
+#dynamic-content #current-forecast {
+    text-align: left;
 }
 
 #dynamic-content #current-forecast #current-summary {

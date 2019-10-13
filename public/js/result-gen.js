@@ -1,5 +1,8 @@
 const searchForm = document.getElementById("search-form");
 const inputField = document.getElementById("input");
+const dynamicContent = document.getElementById("dynamic-content");
+const startImg = document.getElementById("start-img");
+const loadingSVG = document.getElementById("loading-svg");
 
 const windSpeed = document.getElementById("wind-speed");
 const humidity = document.getElementById("humidity");
@@ -11,10 +14,18 @@ const currentSummary = document.getElementById("current-summary");
 const lowTemp = document.getElementById("low-temp");
 const highTemp = document.getElementById("high-temp");
 const forecastImg = document.getElementById("forecast-image");
-const hourlyHeader = document.getElementById("hourly-header");
+//const hourlyHeader = document.getElementById("hourly-header");
+
+dynamicContent.style.display = "none";
+startImg.hidden = false;
+loadingSVG.style.visibility = "hidden";
+forecastImg.hidden = true;
 
 // Fetching the data from the "weather?address=" route
 const submitForm = location => {
+    dynamicContent.style.opacity = "0.25";
+    startImg.hidden = true;
+    loadingSVG.style.visibility = "visible";
     fetch("/weather?address=" + location)
         .then(res => {
             res.json()
@@ -32,7 +43,7 @@ const submitForm = location => {
 
 const renderData = data => {
     windSpeed.innerText = data.currently.windSpeed + " m/s";
-    humidity.innerText = data.currently.humidity * 100 + "%";
+    humidity.innerText = Math.round(data.currently.humidity) * 100 + "%";
     dewPt.innerText = Math.round(data.currently.dewPoint) + "˚";
     uvIndex.innerText = data.currently.uvIndex;
     visibility.innerText = Math.round(data.currently.visibility) + " km";
@@ -49,12 +60,20 @@ const renderData = data => {
         case "Light Rain":
             forecastImg.src = "/img/rain.png";
             break;
+        case "Mostly Cloudy":
+            forecastImg.src = "/img/cloudy.png";
+            break;
         default:
             forecastImg.src = "/img/logo.png";
             break;
     }
 
-    hourlyHeader.innerText = data.hourly.summary;
+    //hourlyHeader.innerText = data.hourly.summary;
+
+    loadingSVG.style.visibility = "hidden";
+    forecastImg.hidden = false;
+    dynamicContent.style.opacity = "1";
+    dynamicContent.style.display = "block";
 };
 
 const renderError = err => {};
